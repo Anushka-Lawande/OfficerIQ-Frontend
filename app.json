@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "OfficerIQ",
+    "slug": "officeriq",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#F7F9FC"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.officeriq.app"
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}

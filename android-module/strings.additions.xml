@@ -1,0 +1,3 @@
+<resources>
+    <string name="accessibility_service_description">OfficerIQ uses this to detect which app is open so it can block distracting apps during Focus Mode.</string>
+</resources>

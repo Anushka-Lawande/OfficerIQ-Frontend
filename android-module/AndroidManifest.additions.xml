@@ -1,0 +1,47 @@
+<!--
+  Add these entries inside the <application> tag of your android/app/src/main/AndroidManifest.xml
+  (after running `expo prebuild` / `npx expo run:android` to generate the android/ folder).
+  Also add the <uses-permission> lines as direct children of <manifest>.
+-->
+
+<!-- Permissions (outside <application>, as children of <manifest>) -->
+<uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
+    tools:ignore="ProtectedPermissions" />
+<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+<uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+<!-- Inside <application> -->
+<service
+    android:name="com.officeriq.appblocker.FocusAccessibilityService"
+    android:exported="false"
+    android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+    <intent-filter>
+        <action android:name="android.accessibilityservice.AccessibilityService" />
+    </intent-filter>
+    <meta-data
+        android:name="android.accessibilityservice"
+        android:resource="@xml/accessibility_service_config" />
+</service>
+
+<service
+    android:name="com.officeriq.appblocker.MonitoringForegroundService"
+    android:exported="false"
+    android:foregroundServiceType="dataSync" />
+
+<service
+    android:name="com.officeriq.appblocker.NotificationBlockerService"
+    android:exported="false"
+    android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+    <intent-filter>
+        <action android:name="android.service.notification.NotificationListenerService" />
+    </intent-filter>
+</service>
+
+<activity
+    android:name="com.officeriq.appblocker.BlockOverlayActivity"
+    android:exported="false"
+    android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+    android:excludeFromRecents="true"
+    android:launchMode="singleTask" />
